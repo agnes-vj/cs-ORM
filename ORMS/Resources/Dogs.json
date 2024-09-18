@@ -1,0 +1,102 @@
+﻿[
+  {
+    "Name": "Hattie",
+    "Breed": "Jack Russell",
+    "Loves": "chasing birds"
+  },
+  {
+    "Name": "Evie",
+    "Breed": "Pomeranian",
+    "Loves": "borking"
+  },
+  {
+    "Name": "Millie",
+    "Breed": "Pomeranian",
+    "Loves": "millie"
+  },
+  {
+    "Name": "Susie",
+    "Breed": "Schnauzer",
+    "Loves": "going on holiday"
+  },
+  {
+    "Name": "Gertie",
+    "Breed": "Dachshund",
+    "Loves": "belly rubs"
+  },
+  {
+    "Name": "Buddy",
+    "Breed": "Golden Retriever",
+    "Loves": "fetching balls"
+  },
+  {
+    "Name": "Max",
+    "Breed": "Labrador",
+    "Loves": "swimming"
+  },
+  {
+    "Name": "Bella",
+    "Breed": "Beagle",
+    "Loves": "digging holes"
+  },
+  {
+    "Name": "Daisy",
+    "Breed": "Dachshund",
+    "Loves": "snuggling"
+  },
+  {
+    "Name": "Rocky",
+    "Breed": "Boxer",
+    "Loves": "playing tug of war"
+  },
+  {
+    "Name": "Lucy",
+    "Breed": "Shih Tzu",
+    "Loves": "belly rubs"
+  },
+  {
+    "Name": "Molly",
+    "Breed": "Poodle",
+    "Loves": "running in the park"
+  },
+  {
+    "Name": "Bailey",
+    "Breed": "Cocker Spaniel",
+    "Loves": "chasing squirrels"
+  },
+  {
+    "Name": "Charlie",
+    "Breed": "Border Collie",
+    "Loves": "herding things"
+  },
+  {
+    "Name": "Cooper",
+    "Breed": "Bulldog",
+    "Loves": "sleeping"
+  },
+  {
+    "Name": "Zoe",
+    "Breed": "Bichon Frise",
+    "Loves": "playing in water"
+  },
+  {
+    "Name": "Oscar",
+    "Breed": "German Shepherd",
+    "Loves": "guarding the house"
+  },
+  {
+    "Name": "Toby",
+    "Breed": "Yorkshire Terrier",
+    "Loves": "chasing cats"
+  },
+  {
+    "Name": "Lola",
+    "Breed": "French Bulldog",
+    "Loves": "snoring loudly"
+  },
+  {
+    "Name": "Duke",
+    "Breed": "Rottweiler",
+    "Loves": "chewing toys"
+  }
+]

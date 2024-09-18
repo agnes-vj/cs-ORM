@@ -1,0 +1,152 @@
+﻿[
+  {
+    "Name": "Squeaky Bone",
+    "Squeaks": true,
+    "DogId": 1
+  },
+  {
+    "Name": "Rope Tug",
+    "Squeaks": false,
+    "DogId": 2
+  },
+  {
+    "Name": "Rubber Duck",
+    "Squeaks": true,
+    "DogId": 3
+  },
+  {
+    "Name": "Frisbee",
+    "Squeaks": false,
+    "DogId": 4
+  },
+  {
+    "Name": "Tennis Ball",
+    "Squeaks": false,
+    "DogId": 5
+  },
+  {
+    "Name": "Plush Toy",
+    "Squeaks": true,
+    "DogId": 6
+  },
+  {
+    "Name": "Squeaky Bone",
+    "Squeaks": true,
+    "DogId": 7
+  },
+  {
+    "Name": "Rope Tug",
+    "Squeaks": false,
+    "DogId": 8
+  },
+  {
+    "Name": "Rubber Duck",
+    "Squeaks": true,
+    "DogId": 9
+  },
+  {
+    "Name": "Frisbee",
+    "Squeaks": false,
+    "DogId": 10
+  },
+  {
+    "Name": "Tennis Ball",
+    "Squeaks": false,
+    "DogId": 11
+  },
+  {
+    "Name": "Plush Toy",
+    "Squeaks": true,
+    "DogId": 12
+  },
+  {
+    "Name": "Squeaky Bone",
+    "Squeaks": true,
+    "DogId": 13
+  },
+  {
+    "Name": "Rope Tug",
+    "Squeaks": false,
+    "DogId": 14
+  },
+  {
+    "Name": "Rubber Duck",
+    "Squeaks": true,
+    "DogId": 15
+  },
+  {
+    "Name": "Frisbee",
+    "Squeaks": false,
+    "DogId": 16
+  },
+  {
+    "Name": "Tennis Ball",
+    "Squeaks": false,
+    "DogId": 17
+  },
+  {
+    "Name": "Plush Toy",
+    "Squeaks": true,
+    "DogId": 18
+  },
+  {
+    "Name": "Squeaky Bone",
+    "Squeaks": true,
+    "DogId": 19
+  },
+  {
+    "Name": "Rope Tug",
+    "Squeaks": false,
+    "DogId": 20
+  },
+  {
+    "Name": "Rubber Duck",
+    "Squeaks": true,
+    "DogId": 1
+  },
+  {
+    "Name": "Frisbee",
+    "Squeaks": false,
+    "DogId": 2
+  },
+  {
+    "Name": "Tennis Ball",
+    "Squeaks": false,
+    "DogId": 3
+  },
+  {
+    "Name": "Plush Toy",
+    "Squeaks": true,
+    "DogId": 4
+  },
+  {
+    "Name": "Squeaky Bone",
+    "Squeaks": true,
+    "DogId": 5
+  },
+  {
+    "Name": "Rope Tug",
+    "Squeaks": false,
+    "DogId": 6
+  },
+  {
+    "Name": "Rubber Duck",
+    "Squeaks": true,
+    "DogId": 7
+  },
+  {
+    "Name": "Frisbee",
+    "Squeaks": false,
+    "DogId": 8
+  },
+  {
+    "Name": "Tennis Ball",
+    "Squeaks": false,
+    "DogId": 9
+  },
+  {
+    "Name": "Plush Toy",
+    "Squeaks": true,
+    "DogId": 10
+  }
+]

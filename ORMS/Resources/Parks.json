@@ -1,0 +1,42 @@
+﻿[
+  {
+    "Name": "Heaton Park",
+    "RatingOutOf10": 9
+  },
+  {
+    "Name": "Platt Fields Park",
+    "RatingOutOf10": 8
+  },
+  {
+    "Name": "Alexandra Park",
+    "RatingOutOf10": 7
+  },
+  {
+    "Name": "Fletcher Moss Park",
+    "RatingOutOf10": 6
+  },
+  {
+    "Name": "Chorlton Park",
+    "RatingOutOf10": 7
+  },
+  {
+    "Name": "Debdale Park",
+    "RatingOutOf10": 5
+  },
+  {
+    "Name": "Wythenshawe Park",
+    "RatingOutOf10": 8
+  },
+  {
+    "Name": "Whitworth Park",
+    "RatingOutOf10": 6
+  },
+  {
+    "Name": "Hulme Park",
+    "RatingOutOf10": 9
+  },
+  {
+    "Name": "Peel Park",
+    "RatingOutOf10": 10
+  }
+]

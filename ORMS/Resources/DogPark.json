@@ -1,0 +1,158 @@
+[
+  {
+    "DogId": 1,
+    "ParkId": 1
+  },
+  {
+    "DogId": 1,
+    "ParkId": 5
+  },
+  {
+    "DogId": 2,
+    "ParkId": 2
+  },
+  {
+    "DogId": 3,
+    "ParkId": 2
+  },
+  {
+    "DogId": 3,
+    "ParkId": 3
+  },
+  {
+    "DogId": 4,
+    "ParkId": 4
+  },
+  {
+    "DogId": 4,
+    "ParkId": 5
+  },
+  {
+    "DogId": 5,
+    "ParkId": 6
+  },
+  {
+    "DogId": 5,
+    "ParkId": 7
+  },
+  {
+    "DogId": 6,
+    "ParkId": 7
+  },
+  {
+    "DogId": 6,
+    "ParkId": 8
+  },
+  {
+    "DogId": 7,
+    "ParkId": 3
+  },
+  {
+    "DogId": 7,
+    "ParkId": 9
+  },
+  {
+    "DogId": 8,
+    "ParkId": 4
+  },
+  {
+    "DogId": 8,
+    "ParkId": 10
+  },
+  {
+    "DogId": 9,
+    "ParkId": 5
+  },
+  {
+    "DogId": 9,
+    "ParkId": 6
+  },
+  {
+    "DogId": 10,
+    "ParkId": 7
+  },
+  {
+    "DogId": 10,
+    "ParkId": 8
+  },
+  {
+    "DogId": 11,
+    "ParkId": 9
+  },
+  {
+    "DogId": 11,
+    "ParkId": 1
+  },
+  {
+    "DogId": 12,
+    "ParkId": 2
+  },
+  {
+    "DogId": 12,
+    "ParkId": 10
+  },
+  {
+    "DogId": 13,
+    "ParkId": 1
+  },
+  {
+    "DogId": 13,
+    "ParkId": 6
+  },
+  {
+    "DogId": 14,
+    "ParkId": 3
+  },
+  {
+    "DogId": 14,
+    "ParkId": 5
+  },
+  {
+    "DogId": 15,
+    "ParkId": 2
+  },
+  {
+    "DogId": 15,
+    "ParkId": 9
+  },
+  {
+    "DogId": 16,
+    "ParkId": 4
+  },
+  {
+    "DogId": 16,
+    "ParkId": 8
+  },
+  {
+    "DogId": 17,
+    "ParkId": 7
+  },
+  {
+    "DogId": 17,
+    "ParkId": 10
+  },
+  {
+    "DogId": 18,
+    "ParkId": 1
+  },
+  {
+    "DogId": 18,
+    "ParkId": 9
+  },
+  {
+    "DogId": 19,
+    "ParkId": 3
+  },
+  {
+    "DogId": 19,
+    "ParkId": 6
+  },
+  {
+    "DogId": 20,
+    "ParkId": 5
+  },
+  {
+    "DogId": 20,
+    "ParkId": 10
+  }
+]
