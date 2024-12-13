@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ORMS;
+using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Principal;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -9,6 +12,17 @@ var dogs = Utils.DeserializeFromFile<List<Dog>>("./Resources/Dogs.json");
 var parks = Utils.DeserializeFromFile<List<Park>>("./Resources/Parks.json");
 var dogParkVisits = Utils.DeserializeFromFile<List<DogParkVisits>>("./Resources/DogPark.json");
 
+using (var db1 = new MyDbContext())
+{
+
+    //Get All Owners
+
+    var owners = db1.Owners.ToList();
+    foreach (var owner in owners)
+    {
+        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
+    }
+}
 using (var db = new MyDbContext())
 {
     db.Database.EnsureDeleted();
@@ -72,15 +86,54 @@ using (var db = new MyDbContext())
     db.DogParkVisits.AddRange(dogParkVisits);
     db.SaveChanges();
 
-    //Query the Dogs table and see a list of their favourite parks they have been to.
-    var dogFavouriteParks = db.DogParkVisits
-                                .Include(d => d.Dog)
-                                .Include(d => d.Park)
-                                .ToList();
-    foreach (var dogFavPark in dogFavouriteParks)
+    //Query the Parks table and see a list of dogs visited.
+
+
+    var parksWithDogs = db.Parks
+                           .Include(pd => pd.DogsVisited)
+                           .ToList();
+    foreach (var park in parksWithDogs)
     {
-        Console.WriteLine($"Park Id: {dogFavPark.ParkId}| Park Name: {dogFavPark.Park.Name}| Rating: {dogFavPark.Park.RatingOutOf10} | Dogs Visited: "  );
-        
+        Console.Write($"Park Id: {park.Id}| Park Name: {park.Name}| Rating: {park.RatingOutOf10} | Dogs Visited: ");
+        foreach (var dogParkVisit in park.DogsVisited)
+        {
+            Console.Write(dogParkVisit.Dog.Name + ", ");
+        }
+        Console.WriteLine();
+    }
+
+    // Query the Dogs table and see a list of their favourite parks they have been to.
+    Console.WriteLine("Dogs with visited Parks");
+    var dogWithParks = db.Dogs
+                          .Include(pd => pd.FavouriteParks)
+                          .ToList();
+    foreach (var dog in dogWithParks)
+    {
+        Console.Write($"Dog Id: {dog.Id}| Dog Name: {dog.Name}| Breed : {dog.Breed} | Parks Visited: ");
+        foreach (var dogParkVisit in dog.FavouriteParks)
+        {
+            Console.Write(dogParkVisit.Park.Name + ", ");
+        }
+        Console.WriteLine();
+    }
+
+    //Get All Owners
+    Console.WriteLine("Owners From Inside");
+    var owners = db.Owners.ToList();
+    foreach (var owner in owners)
+    {
+        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
     }
 }
-    
+Console.WriteLine("Outside at the End");
+using (var db1 = new MyDbContext())
+{
+
+    //Get All Owners
+
+    var owners = db1.Owners.ToList();
+    foreach (var owner in owners)
+    {
+        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
+    }
+}
