@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ORMS;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Principal;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -12,17 +13,17 @@ var dogs = Utils.DeserializeFromFile<List<Dog>>("./Resources/Dogs.json");
 var parks = Utils.DeserializeFromFile<List<Park>>("./Resources/Parks.json");
 var dogParkVisits = Utils.DeserializeFromFile<List<DogParkVisits>>("./Resources/DogPark.json");
 
-using (var db1 = new MyDbContext())
-{
+//using (var db1 = new MyDbContext())
+//{
 
-    //Get All Owners
+//    //Get All Owners
 
-    var owners = db1.Owners.ToList();
-    foreach (var owner in owners)
-    {
-        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
-    }
-}
+//    var owners = db1.Owners.ToList();
+//    foreach (var owner in owners)
+//    {
+//        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
+//    }
+//}
 using (var db = new MyDbContext())
 {
     db.Database.EnsureDeleted();
@@ -117,23 +118,73 @@ using (var db = new MyDbContext())
         Console.WriteLine();
     }
 
-    //Get All Owners
-    Console.WriteLine("Owners From Inside");
-    var owners = db.Owners.ToList();
-    foreach (var owner in owners)
-    {
-        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
-    }
-}
-Console.WriteLine("Outside at the End");
-using (var db1 = new MyDbContext())
-{
+    ////Get All Owners
+    //Console.WriteLine("Owners From Inside");
+    //var owners = db.Owners.ToList();
+    //foreach (var owner in owners)
+    //{
+    //    Console.WriteLine($"{owner.FirstName} {owner.LastName}");
+    //}
 
-    //Get All Owners
+    //Get a list of dogs that have visited "Alexandra Park".
+    Console.WriteLine("Dogs that visited Alexandra Park:");
+    var dogsPark = db.Parks.Include(p=>p.DogsVisited).ToList();
+    var dogVisitedAlexPark = dogsPark.Where(d => d.Name == "Alexandra Park").ToList();
 
-    var owners = db1.Owners.ToList();
-    foreach (var owner in owners)
+    foreach(var park in dogVisitedAlexPark)
     {
-        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
+        Console.WriteLine("Park Name: " + park.Name + "| Dogs Visited: ");
+        foreach(var dogAlexPark in park.DogsVisited)
+        {
+            Console.Write(dogAlexPark.Dog.Name + ", ");
+        }
     }
+
+    //Get a list of all the toys owned by all the dogs that have visited "Heaton Park".
+    Console.WriteLine("Toys that belong to dogs who visited Heaton Park: ");
+    var dogsPark2 = db.Parks.Include(p => p.DogsVisited).ToList();
+    dogsPark2
+        .Where(d => d.Name == "Heaton Park")
+        .ToList()
+        .ForEach(p => p.DogsVisited
+                                .ForEach(d => d.Dog.Toys
+                                                    .ForEach(t => Console.Write(t.Name + " "))));
+
+    /*
+    foreach (var park in dogVisitedHeatonPark)
+    {
+        Console.WriteLine("Park Name: " + park.Name + "| All Toys owned by dogs who visited Heaton Park: ");
+        foreach (var dogHeatonPark in park.DogsVisited)
+        {
+            foreach(var toy in dogHeatonPark.Dog.Toys)
+            {
+                Console.Write(toy.Name, " ");
+            }
+        }
+    }*/
+
+    //Get the park that has had the most visitors.
+    Console.WriteLine("park that has had the most visitors");
+
+    Dictionary<string, int> ParkVisitors = new Dictionary<string, int>();
+    db.Parks
+        .Include(p => p.DogsVisited)
+        .ToList()
+        .ForEach(p => ParkVisitors.Add(p.Name, p.DogsVisited.Count));
+
+    var parkVisitedMost = ParkVisitors.OrderByDescending(p => p.Value).First();
+    Console.WriteLine(parkVisitedMost.Key + "was visited " + parkVisitedMost.Value + " Times");
+
 }
+//Console.WriteLine("Outside at the End");
+//using (var db1 = new MyDbContext())
+//{
+
+//    //Get All Owners
+
+//    var owners = db1.Owners.ToList();
+//    foreach (var owner in owners)
+//    {
+//        Console.WriteLine($"{owner.FirstName} {owner.LastName}");
+//    }
+//}
