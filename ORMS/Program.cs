@@ -173,7 +173,23 @@ using (var db = new MyDbContext())
         .ForEach(p => ParkVisitors.Add(p.Name, p.DogsVisited.Count));
 
     var parkVisitedMost = ParkVisitors.OrderByDescending(p => p.Value).First();
-    Console.WriteLine(parkVisitedMost.Key + "was visited " + parkVisitedMost.Value + " Times");
+    Console.WriteLine(parkVisitedMost.Key + " was visited " + parkVisitedMost.Value + " Times");
+
+
+    //Parks with no visitors
+    db.Parks.Add(new() { Name = "EverGreen Park", RatingOutOf10 = 5 });
+    db.Parks.Add(new() { Name = "London Park", RatingOutOf10 = 6 });
+    db.SaveChanges();
+
+    Console.WriteLine("Parks that don't allow Dogs");
+    db.Parks.Include(p => p.DogsVisited)
+                                       .Where(parkAndDogs => parkAndDogs.DogsVisited.Count == 0)
+                                       .ToList()
+                                       .ForEach(parkZeroVisitor => Console.WriteLine(parkZeroVisitor.Name));
+
+
+                    
+    
 
 }
 //Console.WriteLine("Outside at the End");
