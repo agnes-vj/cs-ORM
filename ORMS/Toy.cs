@@ -8,10 +8,12 @@ namespace ORMS
 {
     internal class Toy
     {
-        public int Id;
-        public string Name;
-        public bool Squeaks;
-        public int DogId;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool Squeaks { get; set; }
+        public int DogId { get; set; }
+        //navigation property
+        public Dog Dog { get; set; }
 
     }
 }
