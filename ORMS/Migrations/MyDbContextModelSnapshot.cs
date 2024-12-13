@@ -74,12 +74,17 @@ namespace ORMS.Migrations
             modelBuilder.Entity("ORMS.Toy", b =>
                 {
                     b.HasOne("ORMS.Dog", "Dog")
-                        .WithMany()
+                        .WithMany("Toys")
                         .HasForeignKey("DogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Dog");
+                });
+
+            modelBuilder.Entity("ORMS.Dog", b =>
+                {
+                    b.Navigation("Toys");
                 });
 #pragma warning restore 612, 618
         }

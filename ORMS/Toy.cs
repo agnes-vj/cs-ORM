@@ -11,7 +11,7 @@ namespace ORMS
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Squeaks { get; set; }
-        public int DogId { get; set; }
+        public int DogId { get; set; } = 1;
         //navigation property
         public Dog Dog { get; set; }
 

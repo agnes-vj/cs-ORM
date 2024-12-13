@@ -26,4 +26,41 @@ using(var db = new MyDbContext())
         Console.Write("belongs to:" + toy.Dog.Name);
         Console.WriteLine();
     }
-}
+
+    var dogToys = db.Dogs
+                    .Include(dt => dt.Toys)
+                    .ToList();
+    foreach (var dogtoy in dogToys)
+    {
+        Console.Write(dogtoy.Name + " has Toys : ");
+        foreach (var toy in dogtoy.Toys)
+        {
+            Console.Write(toy.Name + ", ");
+        }
+        Console.WriteLine();
+    }
+
+    //Add a new Dog
+    Dog newDog = new()
+        {
+            Name = "Ginger1",
+            Breed = "Pomeranian",
+            Loves = "Play"
+        };
+    db.Dogs.Add(newDog);
+    db.SaveChanges();
+    //Add a new Toy
+
+    Toy newToy = new()
+        {
+            Name = "NewRubberDucky",
+            Squeaks = true
+        };
+
+    //update newToy with newDogId
+    db.Toys.Add(newToy);   
+    newToy.DogId = newDog.Id;
+    db.SaveChanges();
+    
+    }
+    

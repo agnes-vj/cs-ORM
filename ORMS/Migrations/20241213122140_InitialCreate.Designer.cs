@@ -11,7 +11,7 @@ using ORMS;
 namespace ORMS.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20241213111937_InitialCreate")]
+    [Migration("20241213122140_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -77,12 +77,17 @@ namespace ORMS.Migrations
             modelBuilder.Entity("ORMS.Toy", b =>
                 {
                     b.HasOne("ORMS.Dog", "Dog")
-                        .WithMany()
+                        .WithMany("Toys")
                         .HasForeignKey("DogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Dog");
+                });
+
+            modelBuilder.Entity("ORMS.Dog", b =>
+                {
+                    b.Navigation("Toys");
                 });
 #pragma warning restore 612, 618
         }
