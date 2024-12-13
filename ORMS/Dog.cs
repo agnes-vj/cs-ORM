@@ -13,5 +13,6 @@ namespace ORMS
         public string Breed { get; set; }
         public string Loves { get; set; }
         public List<Toy> Toys { get; set; } = new List<Toy>();
+        public List<DogParkVisits> FavouriteParks { get; set; } = new List<DogParkVisits> { };
     }
 }

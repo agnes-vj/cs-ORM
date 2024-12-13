@@ -1,13 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using ORMS;
 using System.Security.Principal;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 var toys = Utils.DeserializeFromFile<List<Toy>>("./Resources/Toys.json");
 var dogs = Utils.DeserializeFromFile<List<Dog>>("./Resources/Dogs.json");
-//var parks = Utils.DeserializeFromFile<List<Park>>("./Resources/Parks.json");
-//var dogParkVisits = Utils.DeserializeFromFile<List<DogPark>>("./Resources/DogPark.json");
+var parks = Utils.DeserializeFromFile<List<Park>>("./Resources/Parks.json");
+var dogParkVisits = Utils.DeserializeFromFile<List<DogParkVisits>>("./Resources/DogPark.json");
 
-using(var db = new MyDbContext())
+using (var db = new MyDbContext())
 {
     db.Database.EnsureDeleted();
     db.Database.EnsureCreated();
@@ -20,9 +22,9 @@ using(var db = new MyDbContext())
                         .Include(d => d.Dog)
                         .ToList();
 
-    foreach(var toy in dogAndToys)
+    foreach (var toy in dogAndToys)
     {
-        Console.Write("Toy: "+ toy.Name);
+        Console.Write("Toy: " + toy.Name);
         Console.Write("belongs to:" + toy.Dog.Name);
         Console.WriteLine();
     }
@@ -42,25 +44,43 @@ using(var db = new MyDbContext())
 
     //Add a new Dog
     Dog newDog = new()
-        {
-            Name = "Ginger1",
-            Breed = "Pomeranian",
-            Loves = "Play"
-        };
+    {
+        Name = "Ginger1",
+        Breed = "Pomeranian",
+        Loves = "Play"
+    };
     db.Dogs.Add(newDog);
     db.SaveChanges();
     //Add a new Toy
 
     Toy newToy = new()
-        {
-            Name = "NewRubberDucky",
-            Squeaks = true
-        };
+    {
+        Name = "NewRubberDucky",
+        Squeaks = true
+    };
 
     //update newToy with newDogId
-    db.Toys.Add(newToy);   
+    db.Toys.Add(newToy);
     newToy.DogId = newDog.Id;
     db.SaveChanges();
-    
+
+    //add parks
+    db.Parks.AddRange(parks);
+    db.SaveChanges();
+
+    //add dogparkvisits
+    db.DogParkVisits.AddRange(dogParkVisits);
+    db.SaveChanges();
+
+    //Query the Dogs table and see a list of their favourite parks they have been to.
+    var dogFavouriteParks = db.DogParkVisits
+                                .Include(d => d.Dog)
+                                .Include(d => d.Park)
+                                .ToList();
+    foreach (var dogFavPark in dogFavouriteParks)
+    {
+        Console.WriteLine($"Park Id: {dogFavPark.ParkId}| Park Name: {dogFavPark.Park.Name}| Rating: {dogFavPark.Park.RatingOutOf10} | Dogs Visited: "  );
+        
     }
+}
     

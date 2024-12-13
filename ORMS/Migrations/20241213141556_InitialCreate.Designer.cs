@@ -11,7 +11,7 @@ using ORMS;
 namespace ORMS.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20241213122140_InitialCreate")]
+    [Migration("20241213141556_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -49,6 +49,49 @@ namespace ORMS.Migrations
                     b.ToTable("Dogs");
                 });
 
+            modelBuilder.Entity("ORMS.DogParkVisits", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DogId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ParkId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DogId");
+
+                    b.HasIndex("ParkId");
+
+                    b.ToTable("DogParkVisits");
+                });
+
+            modelBuilder.Entity("ORMS.Park", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RatingOutOf10")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Parks");
+                });
+
             modelBuilder.Entity("ORMS.Toy", b =>
                 {
                     b.Property<int>("Id")
@@ -74,6 +117,25 @@ namespace ORMS.Migrations
                     b.ToTable("Toys");
                 });
 
+            modelBuilder.Entity("ORMS.DogParkVisits", b =>
+                {
+                    b.HasOne("ORMS.Dog", "Dog")
+                        .WithMany("FavouriteParks")
+                        .HasForeignKey("DogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ORMS.Park", "Park")
+                        .WithMany("DogsVisited")
+                        .HasForeignKey("ParkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dog");
+
+                    b.Navigation("Park");
+                });
+
             modelBuilder.Entity("ORMS.Toy", b =>
                 {
                     b.HasOne("ORMS.Dog", "Dog")
@@ -87,7 +149,14 @@ namespace ORMS.Migrations
 
             modelBuilder.Entity("ORMS.Dog", b =>
                 {
+                    b.Navigation("FavouriteParks");
+
                     b.Navigation("Toys");
+                });
+
+            modelBuilder.Entity("ORMS.Park", b =>
+                {
+                    b.Navigation("DogsVisited");
                 });
 #pragma warning restore 612, 618
         }

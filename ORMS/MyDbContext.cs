@@ -11,6 +11,8 @@ namespace ORMS
     {
         public DbSet<Dog> Dogs { get; set; }
         public DbSet<Toy> Toys { get; set; }
+        public DbSet<Park> Parks { get; set; }
+        public DbSet<DogParkVisits> DogParkVisits { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
